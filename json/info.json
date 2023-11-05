@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Flutter",
+        "image": "assets/copy1.jpg"
+    },
+
+    {
+        "title": "React Native",
+        "image": "assets/copy.jpg"
+    },
+
+    {
+        "title": "JavaScript",
+        "image": "assets/image1.jpg"
+    },
+
+    {
+        "title": "Django",
+        "image": "assets/copy1.jpg"
+    }
+]
