@@ -174,10 +174,14 @@ class _HomePageState extends State<HomePage> {
                                     blurRadius: 10,
                                     offset: Offset(4, 8))
                               ]),
-                          child: const Icon(
-                            Icons.play_circle_filled,
+                          child:  IconButton(
+                            onPressed: (){
+                              Navigator.of(context).pushNamed('/video');
+                            },
+                            icon : const Icon(Icons.play_circle_filled,
                             size: 60,
-                            color: Colors.white,
+                            color: Colors.white,)
+                            
                           ),
                         ),
                       ],

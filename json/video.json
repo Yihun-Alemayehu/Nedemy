@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Flutter",
+        "time": "12 minutes",
+        "thumbnail": "assets/copy1.jpg",
+        "url": "http://flutter.dev"
+    },
+
+    {
+        "title": "React Native",
+        "time": "9 minutes",
+        "thumbnail": "assets/copy.jpg",
+        "url": "http://flutter.dev"
+    },
+
+    {
+        "title": "JavaScript",
+        "time": "15 minutes",
+        "thumbnail": "assets/image1.jpg",
+        "url": "http://flutter.dev"
+    },
+
+    {
+        "title": "Django",
+        "time": "6 minutes",
+        "thumbnail": "assets/copy1.jpg",
+        "url": "http://flutter.dev"
+    }
+]
