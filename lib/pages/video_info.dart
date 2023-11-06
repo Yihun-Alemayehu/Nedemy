@@ -12,7 +12,8 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.only(top: 70,left: 30, right: 30),
+        //height: 350,
+        padding: const EdgeInsets.only(top: 70,left: 30, right: 30, bottom: 20),
         decoration:  BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -26,7 +27,7 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 300,
+              height: 30,
               child: Column(
                 children: [
                   Row(
@@ -52,7 +53,49 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
                   letterSpacing: 2
                 ),)
               ],
-            )
+            ),
+            const SizedBox(height: 50,),
+            Row(
+              children: [
+                Container(
+                  height: 30,
+                  width: 90,
+                  decoration: BoxDecoration(
+                    color: Colors.blue[400],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child : const Row(
+                    children: [
+                       Icon(
+                          Icons.timer,
+                          color: Colors.white,
+                        ),
+                         SizedBox(
+                          width: 5,
+                        ),
+                         Text(
+                          '32 min',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                    ],
+                  ),
+
+                  
+                )
+              ],
+            ),
+
+            // Expanded(child: Container(
+            //   decoration: const BoxDecoration(
+            //     borderRadius: BorderRadius.only(topRight: Radius.circular(30)),
+            //     color: Colors.white,
+            //   ),
+            // ))
+            
+              
+
           ],
         ),
       ),
