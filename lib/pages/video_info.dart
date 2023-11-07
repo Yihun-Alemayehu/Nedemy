@@ -10,12 +10,11 @@ class VideoInfoPage extends StatefulWidget {
 }
 
 class _VideoInfoPageState extends State<VideoInfoPage> {
+  List videoInfo = [];
 
-  List info = [];
-
-  _initData(){
-    DefaultAssetBundle.of(context).loadString('json/video.json').then((value) {
-      info = jsonDecode(value);
+  _initData() async{
+    await DefaultAssetBundle.of(context).loadString('json/video.json').then((value) {
+      videoInfo = jsonDecode(value);
     });
   }
 
@@ -24,12 +23,13 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
     super.initState();
     _initData();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         //height: 350,
-            
+
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
           const Color.fromARGB(255, 5, 98, 174),
@@ -38,22 +38,23 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(top: 70, left: 30, right: 30, bottom: 20),
+              padding: const EdgeInsets.only(
+                  top: 70, left: 30, right: 30, bottom: 20),
               width: MediaQuery.of(context).size.width,
               height: 300,
               child: Column(
                 children: [
                   Row(
-                    
                     children: [
-                       IconButton(
-                        icon: const Icon(Icons.arrow_back_ios, 
-                        color: Colors.white,),
-                        
-                        onPressed: (){
+                      IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
                           Navigator.of(context).pushNamed('/home');
                         },
-                        ),
+                      ),
                       Expanded(child: Container()),
                       const Icon(Icons.info_outline, color: Colors.white),
                     ],
@@ -72,10 +73,7 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
                       )
                     ],
                   ),
-
                   Expanded(child: Container()),
-
-
                   Row(
                     children: [
                       Container(
@@ -105,12 +103,9 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
                       )
                     ],
                   ),
-
-
                 ],
               ),
             ),
-
             Expanded(
               child: Container(
                 padding: const EdgeInsets.fromLTRB(30, 30, 20, 0),
@@ -121,17 +116,51 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
                 ),
                 child: Column(
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Text(
                           'Tutorial 4: CSS Selectors',
                           style: TextStyle(
-                            fontSize: 20,
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.bold
-                          ),
+                              fontSize: 20,
+                              letterSpacing: 2,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: videoInfo.length,
+                        itemBuilder: (_, int index) {
+                          return GestureDetector(
+                            onTap: (){},
+                            child: Container(
+                              height: 135,
+                              width: 200,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                        image: AssetImage(videoInfo[index]["thumbnail"]),)
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10,),
+                                  Column(
+                                    children: [
+                                      const SizedBox(height: 20,),
+                                      Text(videoInfo[index]["title"]),
+                                      Text(videoInfo[index]["time"]),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
                     )
                   ],
                 ),

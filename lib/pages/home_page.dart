@@ -10,10 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   List info = [];
 
-  _initData(){
+  _initData() {
     DefaultAssetBundle.of(context).loadString('json/info.json').then((value) {
       info = jsonDecode(value);
     });
@@ -93,10 +92,15 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   width: 5,
                 ),
-                const Icon(
-                  Icons.arrow_forward,
-                  size: 15,
-                )
+                IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/video');
+                    },
+                    icon: const Icon(
+                      Icons.arrow_forward,
+                      size: 20,
+                      //color: Colors.white,
+                    )),
               ],
             ),
             const SizedBox(
@@ -174,15 +178,15 @@ class _HomePageState extends State<HomePage> {
                                     blurRadius: 10,
                                     offset: Offset(4, 8))
                               ]),
-                          child:  IconButton(
-                            onPressed: (){
-                              Navigator.of(context).pushNamed('/video');
-                            },
-                            icon : const Icon(Icons.play_circle_filled,
-                            size: 60,
-                            color: Colors.white,)
-                            
-                          ),
+                          child: IconButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed('/video');
+                              },
+                              icon: const Icon(
+                                Icons.play_circle_filled,
+                                size: 60,
+                                color: Colors.white,
+                              )),
                         ),
                       ],
                     )
@@ -230,94 +234,94 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
 
-
             // Course Lists
             Expanded(
                 child: OverflowBox(
-                  maxWidth: MediaQuery.of(context).size.width,
-                  child: MediaQuery.removePadding(
-                    removeTop: true,
-                    context: context,
-                    child: ListView.builder(
-                        itemCount: (info.length.toDouble()/2).toInt(),
-                        itemBuilder: (_, index) {
-                          int x = 2*index;
-                          int y = 2*index + 1;
-                          return Row(
-                            children: [
-                              Container(
-                                height: 170,
-                                width: (MediaQuery.of(context).size.width-90)/2,
-                                margin: const EdgeInsets.only(left: 30,bottom: 20, top: 10),
-                                padding: const EdgeInsets.only(bottom: 5),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                    image: DecorationImage(
-                                      image: AssetImage(info[x]['image']),
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 3,
-                                        offset: const Offset(5, 5),
-                                        color: Colors.grey.withOpacity(0.3),
-                                      ),
-                                      BoxShadow(
-                                        blurRadius: 3,
-                                        offset: const Offset(-5, -5),
-                                        color: Colors.grey.withOpacity(0.1),
-                                      ),
-                                    ]),
-                                child:  Center(
-                                    child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Text(
-                                    info[x]['title'],
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                    ),
+              maxWidth: MediaQuery.of(context).size.width,
+              child: MediaQuery.removePadding(
+                removeTop: true,
+                context: context,
+                child: ListView.builder(
+                    itemCount: (info.length.toDouble() / 2).toInt(),
+                    itemBuilder: (_, index) {
+                      int x = 2 * index;
+                      int y = 2 * index + 1;
+                      return Row(
+                        children: [
+                          Container(
+                            height: 170,
+                            width: (MediaQuery.of(context).size.width - 90) / 2,
+                            margin: const EdgeInsets.only(
+                                left: 30, bottom: 20, top: 10),
+                            padding: const EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                  image: AssetImage(info[x]['image']),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    offset: const Offset(5, 5),
+                                    color: Colors.grey.withOpacity(0.3),
                                   ),
-                                )),
-                              ),
-                              Container(
-                                height: 170,
-                                width: (MediaQuery.of(context).size.width-90)/2,
-                                margin: const EdgeInsets.only(left: 30,bottom: 20),
-                                padding: const EdgeInsets.only(bottom: 5),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                    image: DecorationImage(
-                                      image: AssetImage(info[y]['image']),
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 3,
-                                        offset: const Offset(5, 5),
-                                        color: Colors.grey.withOpacity(0.3),
-                                      ),
-                                      BoxShadow(
-                                        blurRadius: 3,
-                                        offset: const Offset(-5, -5),
-                                        color: Colors.grey.withOpacity(0.1),
-                                      ),
-                                    ]),
-                                child:  Center(
-                                    child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Text(
-                                    info[y]['title'],
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                    ),
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    offset: const Offset(-5, -5),
+                                    color: Colors.grey.withOpacity(0.1),
                                   ),
-                                )),
+                                ]),
+                            child: Center(
+                                child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Text(
+                                info[x]['title'],
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                ),
                               ),
-                            ],
-                          );
-                        }),
-                  ),
-                ))
+                            )),
+                          ),
+                          Container(
+                            height: 170,
+                            width: (MediaQuery.of(context).size.width - 90) / 2,
+                            margin: const EdgeInsets.only(left: 30, bottom: 20),
+                            padding: const EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                  image: AssetImage(info[y]['image']),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    offset: const Offset(5, 5),
+                                    color: Colors.grey.withOpacity(0.3),
+                                  ),
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    offset: const Offset(-5, -5),
+                                    color: Colors.grey.withOpacity(0.1),
+                                  ),
+                                ]),
+                            child: Center(
+                                child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Text(
+                                info[y]['title'],
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            )),
+                          ),
+                        ],
+                      );
+                    }),
+              ),
+            ))
           ],
         ),
       ),
