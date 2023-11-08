@@ -14,7 +14,9 @@ class _HomePageState extends State<HomePage> {
 
   _initData() {
     DefaultAssetBundle.of(context).loadString('json/info.json').then((value) {
-      info = jsonDecode(value);
+      setState(() {
+        info = jsonDecode(value);
+      });
     });
   }
 
@@ -248,11 +250,13 @@ class _HomePageState extends State<HomePage> {
                       int y = 2 * index + 1;
                       return Row(
                         children: [
+
+                          // Left side Course lists
                           Container(
-                            height: 170,
+                            height: 120,
                             width: (MediaQuery.of(context).size.width - 90) / 2,
                             margin: const EdgeInsets.only(
-                                left: 30, bottom: 20, top: 10),
+                                left: 30, bottom: 10, top: 10),
                             padding: const EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                                 color: Colors.white,
@@ -283,10 +287,12 @@ class _HomePageState extends State<HomePage> {
                               ),
                             )),
                           ),
+
+                          // Right side Course Lists
                           Container(
-                            height: 170,
+                            height: 120,
                             width: (MediaQuery.of(context).size.width - 90) / 2,
-                            margin: const EdgeInsets.only(left: 30, bottom: 20),
+                            margin: const EdgeInsets.only(left: 30, bottom: 10, top: 15),
                             padding: const EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                                 color: Colors.white,

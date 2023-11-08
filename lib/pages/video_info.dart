@@ -14,7 +14,9 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
 
   _initData() async{
     await DefaultAssetBundle.of(context).loadString('json/video.json').then((value) {
-      videoInfo = jsonDecode(value);
+      setState(() {
+        videoInfo = jsonDecode(value);
+      });
     });
   }
 
@@ -136,6 +138,7 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
                             child: Container(
                               height: 135,
                               width: 200,
+                              
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -150,6 +153,7 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
                                   ),
                                   const SizedBox(width: 10,),
                                   Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(height: 20,),
                                       Text(videoInfo[index]["title"]),
