@@ -11,9 +11,10 @@ class VideoInfoPage extends StatefulWidget {
 }
 
 class _VideoInfoPageState extends State<VideoInfoPage> {
+  List uri = [];
   List videoInfo = [];
   bool _playArea = false;
-  late VideoPlayerController _controller;
+  VideoPlayerController? _controller;
 
   _initData() async {
     await DefaultAssetBundle.of(context)
@@ -24,6 +25,8 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
       });
     });
   }
+
+
 
   @override
   void initState() {
@@ -47,7 +50,7 @@ class _VideoInfoPageState extends State<VideoInfoPage> {
     }
 
     _onTapVideo(int index){
-      final controller = VideoPlayerController.networkUrl(videoInfo[index]["url"]);
+      final controller = VideoPlayerController.networkUrl(Uri.parse('https://www.youtube.com/watch?v=tCDvOQI3pco&ab_channel=TIMER'));
       _controller = controller;
       setState(() {
         
